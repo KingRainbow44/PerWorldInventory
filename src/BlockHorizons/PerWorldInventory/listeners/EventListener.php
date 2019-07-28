@@ -75,9 +75,7 @@ class EventListener implements Listener {
 	 */
 	public function onPlayerLogin(PlayerLoginEvent $event) : void {
 		$player = $event->getPlayer();
-		if($player->isCreative() or $player->hasPermission("per-world-inventory.bypass")) {
-			return;
-		}
+	
 
 		$this->getPlugin()->load($player);
 	}
