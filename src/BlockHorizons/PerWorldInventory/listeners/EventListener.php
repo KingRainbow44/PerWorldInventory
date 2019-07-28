@@ -38,17 +38,13 @@ class EventListener implements Listener {
 	 */
 	public function onLevelChange(EntityLevelChangeEvent $event) : void {
 		$player = $event->getEntity();
-		if(!($player instanceof Player) or $player->isCreative()) {
-			return;
-		}
+		
 
 		$origin = $event->getOrigin();
 		$target = $event->getTarget();
 
 		$this->getPlugin()->storeInventory($player, $origin);
-		if($player->hasPermission("per-world-inventory.bypass")) {
-			return;
-		}
+		
 
 		if($this->getPlugin()->getParentWorld($origin->getFolderName()) === $this->getPlugin()->getParentWorld($target->getFolderName())) {
 			return;
